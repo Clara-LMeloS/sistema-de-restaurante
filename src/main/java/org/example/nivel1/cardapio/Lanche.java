@@ -6,7 +6,7 @@ public class Lanche {
     private double preco;
 
     /*O meu construtor está chamando os meus setters (que vão validar minhas condições)
-    // e os getters vão me retornar os valores que foram armazenados nos setters.
+    e os getters vão me retornar os valores que foram armazenados nos setters.
      Eles não são chamados pelo meu construtor.
      */
 
