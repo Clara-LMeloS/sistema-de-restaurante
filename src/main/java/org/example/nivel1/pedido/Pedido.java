@@ -10,6 +10,7 @@ public class Pedido {
     //importei minha classe Lanche ao criar o Array
     ArrayList<Lanche> itens = new ArrayList<>();
 
+
     //Lanche é minha classe e lanche é minha variável (que está representando o novo objeto criado dentro do metodo!)
      void adicionarItem(Lanche lanche){
        itens.add(lanche);
@@ -21,9 +22,34 @@ public class Pedido {
 
     double calcularTotal(){
          double total = 0;
-         for (Lanche lanche : itens) {
+         //calculei aqui o preço de cada item adicionado a minha lista acessando a posição deles no array
+         for (int i =0; i < itens.size(); i++){
+             total =  total + itens.get(i).getPreco();
          }
-    return  itens.size();
+    return total;
     }
 
+
+    public void setNomeCliente(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException(" O nome não pode ficar em branco!");
+        } else {
+            this.nomeCliente = nome;
+        }
+
+
+    }
+    public Pedido(int identificador, String nomeCliente) {
+        this.identificador = identificador;
+        setNomeCliente(nomeCliente);
+    }
+
+
+    public Integer getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(Integer identificador) {
+        this.identificador = identificador;
+    }
 }
