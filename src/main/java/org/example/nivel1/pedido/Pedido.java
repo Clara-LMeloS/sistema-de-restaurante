@@ -12,15 +12,15 @@ public class Pedido {
 
 
     //Lanche é minha classe e lanche é minha variável (que está representando o novo objeto criado dentro do metodo!)
-     void adicionarItem(Lanche lanche){
+    public void adicionarItem(Lanche lanche){
        itens.add(lanche);
     }
-    ArrayList<Lanche> getItens(){
+   public ArrayList<Lanche> getItens(){
          //vou estar retornar minha lista inteira, não só 1 lanche em especifico
          return itens;
     }
 
-    double calcularTotal(){
+   public double calcularTotal(){
          double total = 0;
          //calculei aqui o preço de cada item adicionado a minha lista acessando a posição deles no array
          for (int i =0; i < itens.size(); i++){
@@ -37,13 +37,15 @@ public class Pedido {
             this.nomeCliente = nome;
         }
 
-
     }
     public Pedido(int identificador, String nomeCliente) {
         this.identificador = identificador;
         setNomeCliente(nomeCliente);
     }
 
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
 
     public Integer getIdentificador() {
         return identificador;
