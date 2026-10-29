@@ -1,5 +1,6 @@
 package org.example.app;
 
+import org.example.nivel1.cardapio.ItemCardapio;
 import org.example.nivel1.cardapio.Lanche;
 import org.example.nivel1.pedido.Pedido;
 
@@ -13,7 +14,8 @@ public class MenuConsole {
         System.out.println(" 1 - Registrar novo pedido\n" +
                 " 2 - Listar pedidos do dia\n" +
                 " 3 - Fechar restaurante\n" +
-                " 0 - Sair");
+                " 0 - Sair" +
+                "------------------------------------");
     }
 
     public int lerOpcao() {
@@ -66,8 +68,8 @@ public class MenuConsole {
         for (Pedido pedidoAtual : pedidos) {
             System.out.println(pedidoAtual.getIdentificador() + " - " + pedidoAtual.getNomeCliente() + " - " + pedidoAtual.calcularTotal());
 
-            for (Lanche lancheAtual : pedidoAtual.getItens()) {
-                System.out.printf("%s - R$ %.2f%n", lancheAtual.getNome(), lancheAtual.getPreco());
+            for (ItemCardapio lancheAtual : pedidoAtual.getItens()) {
+                System.out.printf("%s - R$ %.2f%n", lancheAtual.getDescricao(), lancheAtual.getPreco());
 
             }
         }

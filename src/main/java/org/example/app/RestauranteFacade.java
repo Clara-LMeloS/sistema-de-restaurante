@@ -1,6 +1,7 @@
 package org.example.app;
 
 import org.example.nivel1.cardapio.Lanche;
+import org.example.nivel1.cardapio.LancheFactory;
 import org.example.nivel1.pedido.GerenciadorPedidos;
 import org.example.nivel1.pedido.Pedido;
 import java.util.Collection;
@@ -29,13 +30,13 @@ public Lanche criarLanche(int opcao){
 
 switch (opcao){
     case 1:
-        Lanche lanche1 = new Lanche("X-Burguer", 16.00);
+        Lanche lanche1 = LancheFactory.xBurger();
         return lanche1;
     case 2:
-         Lanche lanche2 = new Lanche("X-Salada", 18.00);
+         Lanche lanche2 = LancheFactory.xSalada();
          return lanche2;
     case 3:
-        Lanche lanche3 = new Lanche("X-Bacon", 22.00);
+        Lanche lanche3 = LancheFactory.xBacon();
         return lanche3;
 
     default:
