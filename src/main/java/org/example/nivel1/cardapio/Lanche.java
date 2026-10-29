@@ -1,6 +1,6 @@
 package org.example.nivel1.cardapio;
 
-public class Lanche {
+public class Lanche implements ItemCardapio {
 
     private String nome;
     private double preco;
@@ -15,9 +15,15 @@ public class Lanche {
         setPreco(preco);
     }
 
+      @Override
+    public String getDescricao() {
+        return getNome();
+    }
+
     public double getPreco() {
         return preco;
     }
+
     public String getNome() {
         return nome;
     }

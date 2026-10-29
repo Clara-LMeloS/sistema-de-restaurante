@@ -1,4 +1,5 @@
 package org.example.nivel1.pedido;
+import org.example.nivel1.cardapio.ItemCardapio;
 import org.example.nivel1.cardapio.Lanche;
 import java.util.ArrayList;
 
@@ -8,14 +9,14 @@ public class Pedido {
     String nomeCliente;
 
     //importei minha classe Lanche ao criar o Array
-    ArrayList<Lanche> itens = new ArrayList<>();
+   private ArrayList<ItemCardapio> itens = new ArrayList<>();
 
 
     //Lanche é minha classe e lanche é minha variável (que está representando o novo objeto criado dentro do metodo!)
-    public void adicionarItem(Lanche lanche){
-       itens.add(lanche);
+    public void adicionarItem(ItemCardapio itemCardapio) {
+       itens.add(itemCardapio);
     }
-   public ArrayList<Lanche> getItens(){
+   public ArrayList<ItemCardapio> getItens(){
          //vou estar retornar minha lista inteira, não só 1 lanche em especifico
          return itens;
     }
@@ -28,7 +29,6 @@ public class Pedido {
          }
     return total;
     }
-
 
     public void setNomeCliente(String nome) {
         if (nome == null || nome.trim().isEmpty()) {
