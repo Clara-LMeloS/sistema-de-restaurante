@@ -1,6 +1,5 @@
 package org.example.nivel1.pedido;
 import org.example.nivel1.cardapio.ItemCardapio;
-import org.example.nivel1.cardapio.Lanche;
 import java.util.ArrayList;
 
 public class Pedido {

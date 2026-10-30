@@ -1,5 +1,6 @@
 package org.example.app;
 
+import org.example.nivel1.cardapio.ItemCardapio;
 import org.example.nivel1.cardapio.Lanche;
 import org.example.nivel1.cardapio.LancheFactory;
 import org.example.nivel1.pedido.GerenciadorPedidos;
@@ -14,8 +15,8 @@ public class RestauranteFacade {
         return gerenciadorPedidos.criarPedido(nomeCliente);
     }
 
-    public void adicionarLanche(Pedido pedido, Lanche lanche) {
-        pedido.adicionarItem(lanche);
+    public void adicionarLanche(Pedido pedido, ItemCardapio itemCardapio) {
+        pedido.adicionarItem(itemCardapio);
     }
 
     public Collection<Pedido> listarPedidos() {

@@ -1,6 +1,9 @@
 package org.example.app;
+import org.example.nivel1.cardapio.ComBaconExtra;
+import org.example.nivel1.cardapio.ComCheddar;
 import org.example.nivel1.pedido.Pedido;
 import org.example.nivel1.cardapio.Lanche;
+import org.example.nivel1.cardapio.ItemCardapio;
 import java.util.Collection;
 //O Main deve ficar responsável por iniciar o sistema
 // e controlar o fluxo principal.
@@ -9,7 +12,6 @@ import java.util.Collection;
 // Essa interação fica no MenuConsole.
 public class Main {
     public static void main(String[] args) {
-
         int opcao = -1;
 
         MenuConsole menuConsole = new MenuConsole();
@@ -17,18 +19,29 @@ public class Main {
 
         while (opcao != 0) {
             opcao = menuConsole.lerOpcao();
-
             //  REVISAR ESSE CÓDIGO INTEIRO - fiz com muita ajuda do chat-
             switch (opcao) {
                 case 1:{
                   String nomeCliente =  menuConsole.lerNomeCliente();
                   Pedido pedido = restauranteFacade.criarPedido(nomeCliente);
+
                   boolean adicionarMais = true;
 
                   while(adicionarMais){
                       int opcaoLanche = menuConsole.lerOpcaoLanche();
-                      Lanche lanche = restauranteFacade.criarLanche(opcaoLanche);
+                      ItemCardapio lanche = restauranteFacade.criarLanche(opcaoLanche);
+
+                      int opcaoAdicional = menuConsole.lerOpcaoAdicional();
+                      if(opcaoAdicional == 1) {
+                          lanche = new ComCheddar(lanche);
+                      }
+                      int outroAdicional = menuConsole.lerOpcaoAdicional();
+                      if(outroAdicional == 2) {
+                          lanche = new ComBaconExtra(lanche);
+                      }
+
                       restauranteFacade.adicionarLanche(pedido, lanche);
+
                       adicionarMais = menuConsole.perguntarSeDesejaAdicionarMais();
                   }
                   break;
@@ -42,6 +55,9 @@ public class Main {
                     double total = restauranteFacade.calcularTotalDoDia();
                    menuConsole.exibirFechamentoDoDia(total);
                   break;
+
+                case 0:
+                    break;
 
                 default:
                     menuConsole.mensagemInvalida();

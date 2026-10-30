@@ -1,9 +1,6 @@
 package org.example.app;
-
 import org.example.nivel1.cardapio.ItemCardapio;
-import org.example.nivel1.cardapio.Lanche;
 import org.example.nivel1.pedido.Pedido;
-
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -32,14 +29,21 @@ public class MenuConsole {
     }
 
     public int lerOpcaoLanche() {
-        System.out.println("1 - X-Burguer — R$ 16,00\n" +
+        System.out.println("1 - X-Burger — R$ 16,00\n" +
                 "2 - X-Salada — R$ 18,00\n" +
                 "3 - X-Bacon — R$ 22,00");
         int opcao = sc.nextInt();
         sc.nextLine();
         return opcao;
     }
-
+    public int lerOpcaoAdicional() {
+        System.out.println("0 - Sem adicional \n" +
+                "1 - Cheddar — R$ 4,00\n" +
+                "2 - Bacon extra — R$ 6,00");
+        int opcao = sc.nextInt();
+        sc.nextLine();
+        return opcao;
+    }
 
     public boolean perguntarSeDesejaAdicionarMais() {
         System.out.println("Deseja adicionar mais um lanche? \n" +
@@ -70,12 +74,11 @@ public class MenuConsole {
 
             for (ItemCardapio lancheAtual : pedidoAtual.getItens()) {
                 System.out.printf("%s - R$ %.2f%n", lancheAtual.getDescricao(), lancheAtual.getPreco());
-
             }
+
         }
 
     }
-
     public void mensagemInvalida() {
         System.out.println("Opção inválida!");
     }
