@@ -6,6 +6,7 @@ import org.example.nivel1.cardapio.LancheFactory;
 import org.example.nivel1.pedido.GerenciadorPedidos;
 import org.example.nivel1.pedido.Pedido;
 import java.util.Collection;
+import java.util.HashSet;
 
 
 public class RestauranteFacade {
@@ -23,9 +24,19 @@ public class RestauranteFacade {
         return gerenciadorPedidos.getPedidos();
     }
 
+    public Pedido buscarPedido(int numeroPedido) {
+        return gerenciadorPedidos.buscarPedido(numeroPedido);
+    }
+    public void removerPedido(int numeroPedido){
+         gerenciadorPedidos.removerPedidoCompleto(numeroPedido);
+    }
     public double calcularTotalDoDia(){
        return gerenciadorPedidos.calcularTotalDoDia();
     }
+    public HashSet<String> pegarDescricaoItens(){
+        return gerenciadorPedidos.descricaoItens();
+    }
+
 
 public Lanche criarLanche(int opcao){
 

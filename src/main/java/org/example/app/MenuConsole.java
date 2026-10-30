@@ -1,7 +1,9 @@
 package org.example.app;
 import org.example.nivel1.cardapio.ItemCardapio;
+import org.example.nivel1.cardapio.Lanche;
 import org.example.nivel1.pedido.Pedido;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class MenuConsole {
@@ -11,7 +13,8 @@ public class MenuConsole {
         System.out.println(" 1 - Registrar novo pedido\n" +
                 " 2 - Listar pedidos do dia\n" +
                 " 3 - Fechar restaurante\n" +
-                " 0 - Sair" +
+                " 4 - ModificarPedido\n" +
+                " 0 - Sair\n" +
                 "------------------------------------");
     }
 
@@ -31,15 +34,54 @@ public class MenuConsole {
     public int lerOpcaoLanche() {
         System.out.println("1 - X-Burger — R$ 16,00\n" +
                 "2 - X-Salada — R$ 18,00\n" +
-                "3 - X-Bacon — R$ 22,00");
+                "3 - X-Bacon — R$ 22,00\n" +
+                "------------------------------------");
         int opcao = sc.nextInt();
         sc.nextLine();
         return opcao;
     }
+    public void tirarIngredientes(Lanche lanche){
+        int opcao = -1;
+
+        while(opcao != 0){
+            System.out.println("Deseja retirar algum ingrediente?\n" +
+                    "1 - Queijo\n" +
+                    "2 - Cebola\n" +
+                    "3 - Tomate\n" +
+                    "4 - Alface\n" +
+                    "0 - não/sair\n" +
+                    "------------------------------------");
+
+            opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao){
+                case 0:
+                break;
+                case 1:
+                lanche.setQueijo(false);
+                break;
+                case 2:
+                lanche.setCebola(false);
+                break;
+                case 3:
+                lanche.setTomate(false);
+                break;
+                case 4:
+                lanche.setAlface(false);
+                break;
+                default:
+                System.out.println("Opção inválida!");
+            }
+        }
+
+    }
     public int lerOpcaoAdicional() {
-        System.out.println("0 - Sem adicional \n" +
+        System.out.println("Deseja adicionais?\n" +
+                "0 - Sem adicional \n" +
                 "1 - Cheddar — R$ 4,00\n" +
-                "2 - Bacon extra — R$ 6,00");
+                "2 - Bacon extra — R$ 6,00\n" +
+                "------------------------------------");
         int opcao = sc.nextInt();
         sc.nextLine();
         return opcao;
@@ -48,7 +90,8 @@ public class MenuConsole {
     public boolean perguntarSeDesejaAdicionarMais() {
         System.out.println("Deseja adicionar mais um lanche? \n" +
                 "1 - Sim \n" +
-                "2 - Não");
+                "2 - Não\n" +
+                "------------------------------------");
         int lerOpcao = sc.nextInt();
         sc.nextLine();
         if (lerOpcao == 1) {
@@ -57,10 +100,50 @@ public class MenuConsole {
             return false;
         }
     }
+    //mudar o nome de pedido para lanche para evitar confusao
+    public int lerNumeroPedido(){
+        System.out.println("Informe o numero do Pedido a ser modificado: ");
+        int numeroPedido = sc.nextInt();
+        sc.nextLine();
+        return numeroPedido ;
 
-    public void exibirFechamentoDoDia(double total) {
+    }
+    public void pedidoNaoEncontrado() {
+        System.out.println("Pedido não encontrado!");
+    }
+    public void exibirMenuModificacao() {
+        System.out.println("1 - Adicionar lanche\n" +
+                "2 - Remover lanche\n" +
+                "3 - Cancelar pedido\n" +
+                "--------------------------------");
+    }
+    public int lerOpcaoModificacao() {
+        exibirMenuModificacao();
+        int opcao = sc.nextInt();
+        sc.nextLine();
+        return opcao;
+    }
+
+   public void exibirItensPedido (Pedido pedido){
+        for(int i =0; i< pedido.getItens().size();i++){
+            System.out.println( (i + 1) + "  " + pedido.getItens().get(i).getDescricao());
+
+        }
+    }
+    public int lerNumeroItem(){
+        System.out.println("Digite o numero do lanche a ser removido: ");
+        return  sc.nextInt();
+    }
+
+
+    public void exibirFechamentoDoDia(double total, HashSet<String> descricao) {
         System.out.println("Fechamento do dia: ");
         System.out.printf("Total obtido do dia: R$ %.2f%n", total);
+        System.out.println("Total de combinações diferentes: " + descricao.size());
+        for (String item : descricao){
+            System.out.println(item);
+
+        }
 
     }
 
