@@ -1,6 +1,9 @@
 package org.example.nivel1.pedido;
+import org.example.nivel1.cardapio.ItemCardapio;
+
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 
 //É O S DO SOLID -Single Responsability Principle-! Cada classe com sua responsabilidade!
 public class GerenciadorPedidos{
@@ -40,5 +43,22 @@ public class GerenciadorPedidos{
             }
             return guardarValores;
         }
+        public void removerPedidoCompleto(int numero){
+            pedidos.remove(numero);
+        }
+
+
+
+        public HashSet<String> descricaoItens() {
+
+            HashSet<String> itens = new HashSet<>();
+            for (Pedido pedidoAtual : pedidos.values()) {
+                for (ItemCardapio itemAtual :pedidoAtual.getItens()){
+                    itens.add(itemAtual.getDescricao());
+                }
+            }
+        return itens;
+        }
+
    }
 

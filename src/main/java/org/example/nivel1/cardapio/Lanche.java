@@ -23,8 +23,16 @@ public class Lanche implements ItemCardapio {
 
       @Override
     public String getDescricao() {
-        if (queijo) {}
-        return getNome();
+        String descricao = getNome();
+        if (!queijo)
+        { descricao = descricao + " sem queijo";}
+        if (!cebola)
+        { descricao = descricao + " sem cebola";}
+        if (!tomate)
+        { descricao = descricao + " sem tomate";}
+        if (!alface)
+        { descricao = descricao + " sem alface";}
+        return descricao;
     }
     public double getPreco() {
         return preco;

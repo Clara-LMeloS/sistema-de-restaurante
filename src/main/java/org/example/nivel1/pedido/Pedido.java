@@ -7,9 +7,15 @@ public class Pedido {
     int identificador;
     String nomeCliente;
 
-    //importei minha classe Lanche ao criar o Array
+
    private ArrayList<ItemCardapio> itens = new ArrayList<>();
 
+   public void removerItem(int numeroItem){
+       if(numeroItem >=1 && numeroItem <= itens.size()){
+           itens.remove(numeroItem -1);
+       }
+
+   }
 
     //Lanche é minha classe e lanche é minha variável (que está representando o novo objeto criado dentro do metodo!)
     public void adicionarItem(ItemCardapio itemCardapio) {
