@@ -1,22 +1,25 @@
 package org.example.nivel1.cardapio;
 
-import org.example.app.MenuConsole;
 
 public class ComCheddar implements ItemCardapio{
+    private ItemCardapio itemCardapio;
 
+    public ItemCardapio getItemCardapio() {
+        return itemCardapio;
+    }
 
- ComCheddar(ItemCardapio itemCardapio){
+  public ComCheddar(ItemCardapio itemCardapio){
+     this.itemCardapio = itemCardapio;
 
    }
-
         @Override
         public String getDescricao() {
-            return "";
+            return itemCardapio.getDescricao() + "+ cheddar ";
         }
 
         @Override
         public double getPreco() {
-            return 0;
+            return itemCardapio.getPreco() + 4.00;
         }
     }
 
