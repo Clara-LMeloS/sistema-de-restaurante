@@ -68,3 +68,5 @@ Observação: a execução dos testes depende de o JUnit estar configurado nas d
 O objetivo deste projeto é praticar o desenvolvimento de aplicações Java organizadas, aplicando conceitos de orientação a objetos, coleções, padrões de projeto e testes automatizados.
 
 Projeto desenvolvido para fins educacionais.
+
+https://drive.google.com/file/d/1AU-5zVdAXNoHJrksNzwNN3IrT3csTadI/view
