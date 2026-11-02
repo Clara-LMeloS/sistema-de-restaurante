@@ -13,6 +13,8 @@ public class Pedido {
    public void removerItem(int numeroItem){
        if(numeroItem >=1 && numeroItem <= itens.size()){
            itens.remove(numeroItem -1);
+       }else {
+           System.out.println("Número de item inválido!");
        }
 
    }

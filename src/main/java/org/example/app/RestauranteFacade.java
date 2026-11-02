@@ -27,16 +27,18 @@ public class RestauranteFacade {
     public Pedido buscarPedido(int numeroPedido) {
         return gerenciadorPedidos.buscarPedido(numeroPedido);
     }
+
     public void removerPedido(int numeroPedido){
          gerenciadorPedidos.removerPedidoCompleto(numeroPedido);
     }
+
     public double calcularTotalDoDia(){
        return gerenciadorPedidos.calcularTotalDoDia();
     }
+
     public HashSet<String> pegarDescricaoItens(){
         return gerenciadorPedidos.descricaoItens();
     }
-
 
 public Lanche criarLanche(int opcao){
 

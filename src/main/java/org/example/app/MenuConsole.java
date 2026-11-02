@@ -4,6 +4,7 @@ import org.example.nivel1.cardapio.Lanche;
 import org.example.nivel1.pedido.Pedido;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuConsole {
@@ -17,11 +18,27 @@ public class MenuConsole {
                 " 0 - Sair\n" +
                 "------------------------------------");
     }
-
+//adequando meu ler opcao aos erros  meu usuario
     public int lerOpcao() {
+        boolean opcaoValida = false;
+        int opcao = 0;
+
         exibirMenu();
-        int opcao = sc.nextInt();
-        sc.nextLine();
+
+        while (!opcaoValida ) {
+           try{
+               opcao = sc.nextInt();
+               sc.nextLine();
+               if( opcao < 0 || opcao > 4){
+                   System.out.println("Numeração inválida");
+               }else {
+                   opcaoValida = true;
+               }
+           } catch (InputMismatchException e) {
+               System.out.println("Digite apenas números!");
+               sc.nextLine();
+           }
+        }
         return opcao;
     }
 
@@ -32,14 +49,31 @@ public class MenuConsole {
     }
 
     public int lerOpcaoLanche() {
+        boolean opcaoValida = false;
+        int opcao = 0;
+
         System.out.println("1 - X-Burger — R$ 16,00\n" +
                 "2 - X-Salada — R$ 18,00\n" +
                 "3 - X-Bacon — R$ 22,00\n" +
                 "------------------------------------");
-        int opcao = sc.nextInt();
-        sc.nextLine();
+        opcao = 0;
+        while (!opcaoValida) {
+            try {
+                opcao = sc.nextInt();
+                sc.nextLine();
+                if (opcao < 1 || opcao > 3) {
+                    System.out.println("Opção inválida!");
+                } else {
+                    opcaoValida = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números.");
+                sc.nextLine();
+            }
+        }
         return opcao;
     }
+
     public void tirarIngredientes(Lanche lanche){
         int opcao = -1;
 
@@ -52,8 +86,20 @@ public class MenuConsole {
                     "0 - não/sair\n" +
                     "------------------------------------");
 
+            try{
             opcao = sc.nextInt();
             sc.nextLine();
+            if( opcao < 0 || opcao > 4){
+                System.out.println("Numeração inválida");
+                continue;
+            }
+            }catch(InputMismatchException e){
+                System.out.println("Digite apenas números.");
+                sc.nextLine();
+
+                //o continue faz o while começar uma nova repetição sem precisar do switch
+                continue;
+            }
 
             switch (opcao){
                 case 0:
@@ -77,35 +123,78 @@ public class MenuConsole {
 
     }
     public int lerOpcaoAdicional() {
+        boolean opcaoValida = false;
+
         System.out.println("Deseja adicionais?\n" +
                 "0 - Sem adicional \n" +
                 "1 - Cheddar — R$ 4,00\n" +
                 "2 - Bacon extra — R$ 6,00\n" +
                 "------------------------------------");
-        int opcao = sc.nextInt();
-        sc.nextLine();
+
+        int opcao = 0;
+        while (!opcaoValida) {
+            try {
+                opcao = sc.nextInt();
+                sc.nextLine();
+                if (opcao < 0 || opcao > 2) {
+                    System.out.println("Opção inválida!");
+                } else {
+                    opcaoValida = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números.");
+                sc.nextLine();
+            }
+        }
         return opcao;
     }
 
+
     public boolean perguntarSeDesejaAdicionarMais() {
+        boolean opcaoValida = false;
+
         System.out.println("Deseja adicionar mais um lanche? \n" +
                 "1 - Sim \n" +
                 "2 - Não\n" +
                 "------------------------------------");
-        int lerOpcao = sc.nextInt();
-        sc.nextLine();
-        if (lerOpcao == 1) {
-            return true;
-        } else {
-            return false;
+
+        while (!opcaoValida) {
+            try {
+                int lerOpcao = sc.nextInt();
+                sc.nextLine();
+                if (lerOpcao == 1) {
+                    return true;
+                } else if (lerOpcao == 2) {
+                    return false;
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números!");
+                sc.nextLine();
+            }
         }
+        return false;
     }
+
     //mudar o nome de pedido para lanche para evitar confusao
-    public int lerNumeroPedido(){
+    public int lerNumeroPedido() {
+        boolean opcaoValida = false;
         System.out.println("Informe o numero do Pedido a ser modificado: ");
-        int numeroPedido = sc.nextInt();
-        sc.nextLine();
-        return numeroPedido ;
+
+        int numeroPedido = 0;
+        while (!opcaoValida) {
+            try {
+                numeroPedido = sc.nextInt();
+                sc.nextLine();
+                opcaoValida = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números!");
+                sc.nextLine();
+            }
+
+        }
+        return numeroPedido;
 
     }
     public void pedidoNaoEncontrado() {
@@ -118,9 +207,24 @@ public class MenuConsole {
                 "--------------------------------");
     }
     public int lerOpcaoModificacao() {
+        boolean opcaoValida = false;
+        int opcao = 0;
         exibirMenuModificacao();
-        int opcao = sc.nextInt();
-        sc.nextLine();
+
+        while (!opcaoValida) {
+            try {
+                opcao = sc.nextInt();
+                sc.nextLine();
+                if (opcao < 1 || opcao > 3) {
+                    System.out.println("Opção inválida!");
+                } else {
+                    opcaoValida = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números!");
+                sc.nextLine();
+            }
+        }
         return opcao;
     }
 
@@ -131,8 +235,21 @@ public class MenuConsole {
         }
     }
     public int lerNumeroItem(){
+        int numeroItem = 0;
+        boolean opcaoValida = false;
         System.out.println("Digite o numero do lanche a ser removido: ");
-        return  sc.nextInt();
+
+        while (!opcaoValida){
+            try {
+                numeroItem = sc.nextInt();
+                sc.nextLine();
+                opcaoValida = true;
+            }catch (InputMismatchException e){
+                System.out.println("Digite apenas números!");
+                sc.nextLine();
+            }
+        }
+        return  numeroItem;
     }
 
 
